@@ -1,15 +1,19 @@
+const _ = require("lodash");
+const { getDentalClinics, getVetClinics } = require("../utils/data");
+
 const clinicsRoutes = (app, fs) => {
-  const dataPath = "./data/dental-clinics.json";
+  app.get("/api/clinics", async (req, res) => {
+    const { name, state, date } = req.query;
 
-  // read file
-  app.get("/clinics", (req, res) => {
-    fs.readFile(dataPath, "utf8", (err, data) => {
-      if (err) {
-        throw err;
-      }
+    let allClinics = _.concat(await getDentalClinics(), await getVetClinics());
 
-      res.send(JSON.parse(data));
-    });
+    if (name) {
+      allClinics = allClinics.filter((r) =>
+        _.includes(_.toLower(_.trim(r.name)), _.toLower(_.trim(name)))
+      );
+    }
+
+    res.send(allClinics);
   });
 };
 
