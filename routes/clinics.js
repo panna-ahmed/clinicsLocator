@@ -1,3 +1,4 @@
+const _ = require("lodash");
 const { getDentalClinics, getVetClinics } = require("../utils/data");
 const { contains } = require("../lib");
 

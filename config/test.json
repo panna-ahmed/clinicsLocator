@@ -1,0 +1,4 @@
+{
+    "dataDentalPath": "./data/dental-clinics.test.json",
+    "dataVetPath": "./data/vet-clinics.test.json"
+}

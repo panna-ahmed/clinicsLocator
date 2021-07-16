@@ -1,4 +1,4 @@
-const { contains } = require("../lib");
+const { contains } = require("../../lib");
 
 describe("contains", () => {
   it("should return true if both string are same", () => {
