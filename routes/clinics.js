@@ -1,5 +1,5 @@
-const _ = require("lodash");
 const { getDentalClinics, getVetClinics } = require("../utils/data");
+const { contains } = require("../lib");
 
 const clinicsRoutes = (app, fs) => {
   app.get("/api/clinics", async (req, res) => {
@@ -8,9 +8,7 @@ const clinicsRoutes = (app, fs) => {
     let allClinics = _.concat(await getDentalClinics(), await getVetClinics());
 
     if (name) {
-      allClinics = allClinics.filter((r) =>
-        _.includes(_.toLower(_.trim(r.name)), _.toLower(_.trim(name)))
-      );
+      allClinics = allClinics.filter((r) => contains(r.name, name));
     }
 
     res.send(allClinics);
