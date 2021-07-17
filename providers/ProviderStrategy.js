@@ -2,6 +2,7 @@ const fs = require("fs");
 const _ = require("lodash");
 const util = require("util");
 const config = require("config");
+const { Clinic } = require("../models/Clinic");
 
 // Convert fs.readFile into Promise version of same
 const readFile = util.promisify(fs.readFile);
@@ -20,10 +21,7 @@ class ProviderStrategy {
       await readFile(config.get("dataDentalPath"), "utf8")
     );
 
-    return _.map(dentals, (d) => ({
-      name: d.name,
-      state: d.stateName,
-    }));
+    return _.map(dentals, (d) => new Clinic(d.name, d.stateName));
   }
 
   /**
@@ -34,10 +32,7 @@ class ProviderStrategy {
     // read vet file
     let vets = JSON.parse(await readFile(config.get("dataVetPath"), "utf8"));
 
-    return _.map(vets, (d) => ({
-      name: d.clinicName,
-      state: d.stateCode,
-    }));
+    return _.map(vets, (v) => new Clinic(v.clinicName, v.stateCode));
   }
 }
 

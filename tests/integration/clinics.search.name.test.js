@@ -27,6 +27,8 @@ describe("/api/clinics", () => {
   describe("GET ?name=:name", () => {
     it("should return two clinics", async () => {
       const res = await request(server).get("/api/clinics?name=good");
+
+      console.log(res);
       expect(res.status).toBe(200);
       expect(res.body.length).toBe(2);
     });
