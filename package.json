@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "jest --passWithNoTests --watchAll=false --verbose --coverage",
+    "test": "jest --passWithNoTests --watchAll --verbose --coverage",
+    "citest": "jest --ci --passWithNoTests --watchAll=false --verbose --coverage",
     "doc": "jsdoc -d docs --configure jsconf.json index.js"
   },
   "repository": {
