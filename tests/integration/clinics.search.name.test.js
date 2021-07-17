@@ -6,6 +6,7 @@ describe("/api/clinics", () => {
   beforeEach(() => {
     server = require("../../index");
   });
+
   afterEach(() => {
     server.close();
   });
