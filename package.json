@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "jest --passWithNoTests --watchAll --verbose --coverage --forceExit --detectOpenHandles --runInBand"
+    "test": "jest --passWithNoTests --ci --watchAll=false --verbose --coverage --forceExit --detectOpenHandles --runInBand"
   },
   "repository": {
     "type": "git",
