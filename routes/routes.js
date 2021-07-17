@@ -1,11 +1,11 @@
 const clinicsRoutes = require("./clinics");
 
-const appRouter = (app, fs) => {
+const appRouter = (app) => {
   app.get("/", (req, res) => {
     res.send("Clinics Locator");
   });
 
-  clinicsRoutes(app, fs);
+  clinicsRoutes(app);
 };
 
 module.exports = appRouter;

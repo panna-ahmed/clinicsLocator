@@ -3,7 +3,7 @@ const Extraction = require("../providers/Extraction");
 
 const { contains } = require("../lib");
 
-const clinicsRoutes = (app, fs) => {
+const clinicsRoutes = (app) => {
   app.get("/api/clinics", async (req, res) => {
     const { name, state, date } = req.query;
 
