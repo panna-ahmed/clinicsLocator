@@ -1,6 +1,8 @@
 const _ = require("lodash");
 const ProviderStrategy = require("./ProviderStrategy");
-
+/**
+ * Extraction to hold the data sources and give a combined output
+ */
 class Extraction {
   providers = [];
 

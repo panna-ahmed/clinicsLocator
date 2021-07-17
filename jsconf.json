@@ -1,0 +1,6 @@
+{
+    "source": {
+        "include": [ "index.js", "lib.js", "routes", "providers" ],
+        "includePattern": ".+\\.js(doc|x)?$"
+    }
+}
