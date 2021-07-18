@@ -28,7 +28,6 @@ describe("/api/clinics", () => {
     it("should return two clinics", async () => {
       const res = await request(server).get("/api/clinics?name=good");
 
-      console.log(res);
       expect(res.status).toBe(200);
       expect(res.body.length).toBe(2);
     });
@@ -37,6 +36,27 @@ describe("/api/clinics", () => {
       const res = await request(server).get("/api/clinics?name=xxxx");
       expect(res.status).toBe(200);
       expect(res.body.length).toBe(0);
+    });
+  });
+
+  describe("GET ?state=:state", () => {
+    it("should return two clinics", async () => {
+      const res = await request(server).get("/api/clinics?state=FL");
+
+      expect(res.status).toBe(200);
+      expect(res.body.length).toBe(2);
+    });
+
+    it("should return 0 clinics", async () => {
+      const res = await request(server).get("/api/clinics?state=xxxx");
+      expect(res.status).toBe(200);
+      expect(res.body.length).toBe(0);
+    });
+
+    it("should return 1 clinic", async () => {
+      const res = await request(server).get("/api/clinics?state=california");
+      expect(res.status).toBe(200);
+      expect(res.body.length).toBe(1);
     });
   });
 });
