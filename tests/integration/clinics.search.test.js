@@ -59,4 +59,27 @@ describe("/api/clinics", () => {
       expect(res.body.length).toBe(1);
     });
   });
+
+  describe("GET ?name=:name&state=:state", () => {
+    it("should return zero clinics", async () => {
+      const res = await request(server).get("/api/clinics?name=xxx&state=FL");
+
+      expect(res.status).toBe(200);
+      expect(res.body.length).toBe(0);
+    });
+
+    it("should return 1 clinic", async () => {
+      const res = await request(server).get("/api/clinics?name=mayo&state=Fl");
+      expect(res.status).toBe(200);
+      expect(res.body.length).toBe(1);
+    });
+
+    it("should return 1 clinic", async () => {
+      const res = await request(server).get(
+        "/api/clinics?name=nation&state=california"
+      );
+      expect(res.status).toBe(200);
+      expect(res.body.length).toBe(1);
+    });
+  });
 });
