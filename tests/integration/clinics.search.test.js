@@ -82,4 +82,31 @@ describe("/api/clinics", () => {
       expect(res.body.length).toBe(1);
     });
   });
+
+  describe("GET ?from=:from&to=:to", () => {
+    it("should return one clinic", async () => {
+      const res = await request(server).get("/api/clinics?from=8:00&to=9:30");
+
+      expect(res.status).toBe(200);
+      expect(res.body.length).toBe(1);
+    });
+
+    it("should return one clinic", async () => {
+      const res = await request(server).get("/api/clinics?from=22:00&to=24:00");
+
+      expect(res.status).toBe(200);
+      expect(res.body.length).toBe(1);
+    });
+  });
+
+  describe("GET ?name=:name&state=:state&from=:from&to=:to", () => {
+    it("should return one clinic", async () => {
+      const res = await request(server).get(
+        "/api/clinics?name=good health&from=10:00&to=14:30"
+      );
+
+      expect(res.status).toBe(200);
+      expect(res.body.length).toBe(1);
+    });
+  });
 });

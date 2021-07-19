@@ -21,7 +21,10 @@ class ProviderStrategy {
       await readFile(config.get("dataDentalPath"), "utf8")
     );
 
-    return _.map(dentals, (d) => new Clinic(d.name, d.stateName));
+    return _.map(
+      dentals,
+      (d) => new Clinic(d.name, d.stateName, d.availability)
+    );
   }
 
   /**
@@ -32,7 +35,7 @@ class ProviderStrategy {
     // read vet file
     let vets = JSON.parse(await readFile(config.get("dataVetPath"), "utf8"));
 
-    return _.map(vets, (v) => new Clinic(v.clinicName, v.stateCode));
+    return _.map(vets, (v) => new Clinic(v.clinicName, v.stateCode, v.opening));
   }
 }
 

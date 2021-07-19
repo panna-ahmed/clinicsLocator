@@ -1,4 +1,4 @@
-const { contains } = require("../../lib");
+const { contains, checkOverlapInTime } = require("../../lib");
 const Clinic = require("../../models/Clinic");
 const _ = require("lodash");
 
@@ -16,6 +16,11 @@ const filters = {
         : _.toLower(_.trim(state)) == _.toLower(c?.stateName);
     }
     return true;
+  },
+  byTime: (c = Clinic, { from, to }) => {
+    return from && to
+      ? checkOverlapInTime(c.availability.from, c.availability.to, from, to)
+      : true;
   },
 };
 
