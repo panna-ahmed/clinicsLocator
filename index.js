@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const routes = require("./routes/routes.js")(app, fs);
 
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3000;
 const server = app.listen(port, () =>
   console.log(`Server started on ${port}...`)
 );
